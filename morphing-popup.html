@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,10 @@
 	<link rel="stylesheet" href="global.css">
 
 	<style>
+		body {
+			overflow: clip;
+		}
+
 		main {
 			padding: 4em;
 			display: grid;
@@ -29,10 +34,11 @@
 			box-shadow: -0.2em -0.2em 0 lch(from var(--bg) calc(l * 0.7) c h);
 			transition: filter 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
 
-			&:hover, &:focus-visible {
+			&:hover,
+			&:focus-visible {
 				filter: brightness(90%);
 			}
-			
+
 			&:active {
 				box-shadow: -0.1em -0.1em 0 lch(from var(--bg) calc(l * 0.7) c h);
 			}
@@ -64,7 +70,7 @@
 			transition-timing-function: linear(0, 0.354 7.4%, 0.628 15.3%, 0.827 23.8%, 0.902 28.4%, 0.959 33.2%, 1.02 41.8%, 1.044 51.9%, 1.04 61%, 1.005 85.3%, 1);
 			transition-behavior: allow-discrete;
 		}
-		
+
 		[popover]:popover-open {
 			opacity: 1;
 			inset-block-start: 50%;
@@ -75,7 +81,7 @@
 			transition-duration: var(--duration);
 			transition-delay: 0s;
 			transition-timing-function: linear(0, 0.354 7.4%, 0.628 15.3%, 0.827 23.8%, 0.902 28.4%, 0.959 33.2%, 1.02 41.8%, 1.044 51.9%, 1.04 61%, 1.005 85.3%, 1);
-			
+
 			@starting-style {
 				inset-block-start: calc((anchor(start) + anchor(end)) * 0.5);
 				inset-inline-start: calc((anchor(start) + anchor(end)) * 0.5);
@@ -95,36 +101,103 @@
 				text-shadow: -1.5px -1px 0 lch(from currentColor calc(l * 1.6) c h);
 			}
 
-			& > * {
+			&>* {
 				opacity: 0;
-				transition: opacity 0.3s ease;
+				translate: 0 -1rem;
+				transition: opacity 0.3s ease, translate 0.3s ease;
 			}
 		}
 
-		[popover]:popover-open .content > * {
+		[popover]:popover-open .content>* {
 			opacity: 1;
-			transition: opacity 0.3s calc(var(--delay) + 0.1s) ease;
-
+			translate: 0 0;
+			transition: opacity 0.3s calc(var(--delay) + 0.1s) ease, translate 0.3s calc(var(--delay) + 0.17s) ease;
+			
 			@starting-style {
 				opacity: 0;
+				translate: 0 -1rem;
+			}
+		}
+
+		.draggable {
+			position: absolute;
+			touch-action: none;
+			user-select: none;
+			cursor: grab;
+
+			&:active {
+				cursor: grabbing;
 			}
 		}
 	</style>
 </head>
+
 <body>
 
 	<main>
-		<button class="trigger" popovertarget="the-popover">
+		<button class="trigger draggable" popovertarget="the-popover">
 			Open Popup +
 		</button>
 
 		<div id="the-popover" popover="hint">
 			<div class="content">
 				<h2>A Popover</h2>
-				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad veniam delectus iusto aspernatur, repudiandae dolores nostrum mollitia est quia ipsa, perferendis doloribus molestiae nam velit doloremque illo ipsam voluptate ullam.</p>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad veniam delectus iusto aspernatur,
+					repudiandae dolores nostrum mollitia est quia ipsa, perferendis doloribus molestiae nam velit
+					doloremque illo ipsam voluptate ullam.</p>
 			</div>
 		</div>
 	</main>
-	
+
+	<script>
+		const el = document.querySelector('button.draggable');
+
+		let isDragging = false;
+		let hasDragged = false;
+		let startX, startY, initialLeft, initialTop;
+
+		el.addEventListener('pointerdown', (e) => {
+			isDragging = true;
+			hasDragged = false;
+
+			// Bind the pointer to this element so we don't lose it if we drag too fast
+			el.setPointerCapture(e.pointerId);
+
+			startX = e.clientX;
+			startY = e.clientY;
+			initialLeft = el.offsetLeft;
+			initialTop = el.offsetTop;
+		});
+
+		el.addEventListener('pointermove', (e) => {
+			if (!isDragging) return;
+			hasDragged = true;
+
+			const rect = el.getBoundingClientRect();
+			const dx = e.clientX - startX;
+			const dy = e.clientY - startY;
+
+			const _left = Math.min(Math.max(0, initialLeft + dx), (window.innerWidth - rect.width - 10));
+			const _top = Math.max(0, initialTop + dy);
+
+			el.style.left = `${_left}px`;
+			el.style.top = `${_top}px`;
+		});
+
+		el.addEventListener('pointerup', () => {
+			isDragging = false;
+		});
+		el.addEventListener('pointercancel', () => {
+			isDragging = false;
+		});
+
+		el.addEventListener("click", (e) => {
+			if (hasDragged) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		}, { capture: true })
+	</script>
 </body>
+
 </html>
