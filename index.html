@@ -10,6 +10,21 @@
 		:root {
 			color-scheme: dark;
 		}
+
+		li {
+			color: lch(85% 50% calc(sibling-index() * (360deg / sibling-count())));
+
+			a {
+				color: inherit;
+				font-size: 1.3rem;
+				text-decoration-color: lch(from currentColor l c h / 0.5);
+				text-underline-offset: 0.15em;
+			}
+
+			a:hover, a:focus-visible {
+				color:  white;
+			}
+		}
 	</style>
 </head>
 
