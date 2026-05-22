@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>The List</title>
+	<link rel="stylesheet" href="global.css">
 
 	<style>
 		:root {
@@ -12,6 +13,8 @@
 		}
 
 		li {
+			list-style-position: inside;
+			margin-inline-start: 2em;
 			color: lch(85% 50% calc(sibling-index() * (360deg / sibling-count())));
 
 			a {
@@ -19,6 +22,7 @@
 				font-size: 1.3rem;
 				text-decoration-color: lch(from currentColor l c h / 0.5);
 				text-underline-offset: 0.15em;
+				transition: color 0.2s;
 			}
 
 			a:hover, a:focus-visible {
@@ -42,6 +46,10 @@
 
 		<li>
 			<a href="morphing-popup.html">morphing-popup.html</a>
+		</li>
+
+		<li>
+			<a href="borders-on-grid-items.html">borders-on-grid-items.html</a>
 		</li>
 	</ul>
 

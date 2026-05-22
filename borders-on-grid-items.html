@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Consistent borders on grid items</title>
+	<link rel="stylesheet" href="global.css">
+
+	<style>
+		body {
+			display: grid;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: clamp(4rem, 10vw, 8rem);
+			color: lch(70% 30% 250);
+			margin-block-start: 0.3em;
+			margin-block-end: 0.5em;
+
+			--shadow-blur: 0px;
+			text-shadow: 2px 2px var(--shadow-blur) lch(40% 20% 240);
+			transition: text-shadow 0.4s;
+		}
+
+		h1:hover {
+			--shadow-blur: 20px;
+		}
+
+		main {
+			--border: 5px;
+			padding: calc(var(--border) + 0.5rem);
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+			gap: calc(var(--border));
+		}
+
+		main>div {
+			--bg: lch(50% 60% calc(sibling-index() * (360 / sibling-count())));
+
+			height: 18rem;
+			background-image: linear-gradient(315deg,
+					var(--bg),
+					lch(from var(--bg) calc(l * 1.4) c h));
+			outline: var(--border) solid white;
+
+			display: grid;
+			place-content: center;
+			font-size: 4rem;
+			color: lch(from var(--bg) calc(l * 0.4) c h);
+
+			text-shadow: -1.5px -1px 0 lch(from var(--bg) calc(l * 1.5) c h);
+			transition: text-shadow 0.4s;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Awesome</h1>
+
+	<main>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+		<div>10</div>
+		<div>11</div>
+	</main>
+
+</body>
+
+</html>
