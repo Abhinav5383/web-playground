@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pricing Card</title>
+
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: inherit;
+			font-size: inherit;
+			color: inherit;
+		}
+
+		body {
+			font-family: "Space Grotesk", system-ui;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		main {
+			display: grid;
+			min-block-size: 100svb;
+			place-content: center;
+			padding-block: 3rem;
+
+			--clr: #eff1f4;
+			--width: 2px;
+			background: repeating-linear-gradient(var(--clr) 0 var(--width), transparent var(--width), transparent 44px),
+				repeating-linear-gradient(90deg, var(--clr) 0 var(--width), transparent var(--width), transparent 44px);
+		}
+
+		.card {
+			border-radius: 1rem;
+			padding: 1.3rem 1.7rem;
+			display: grid;
+			gap: 2rem;
+			border: 0.2rem solid transparent;
+
+			/* background:
+				radial-gradient(ellipse 60% 15% at 50% -5%, oklch(54.6% 0.245 262.881) 10%, transparent) padding-box,
+				radial-gradient(ellipse 40% 15% at -24% 46%, oklch(63.7% 0.237 25.331), transparent) padding-box,
+				radial-gradient(ellipse 40% 15% at 125% 44%, oklch(63.7% 0.237 25.331), transparent) padding-box,
+				radial-gradient(ellipse 65% 25% at -40% 37%, oklch(87.9% 0.169 91.605), transparent) padding-box,
+				radial-gradient(ellipse 60% 20% at 125% 37%, oklch(87.9% 0.169 91.605), transparent) padding-box,
+				linear-gradient(to bottom, white, white) border-box; */
+
+			background: white;
+			box-shadow:
+				0 0 12px #c0c5cf,
+				0 0 40px #b0b5bf;
+			position: relative;
+			isolation: isolate;
+			overflow: clip;
+
+			.svg-bg {
+				position: absolute;
+				height: stretch;
+				width: stretch;
+				z-index: -1;
+			}
+		}
+
+		.card .top {
+			display: grid;
+			gap: 0.3rem;
+		}
+
+		.card button {
+			border: none;
+			background: linear-gradient(to bottom, #40444a, #20262d);
+			color: white;
+			font-weight: 500;
+			font-size: 1.1rem;
+			padding: 0.7rem;
+			border-radius: 0.7em;
+			transition: filter 0.2s;
+			cursor: pointer;
+
+			&:hover,
+			&:focus-visible {
+				filter: brightness(85%);
+			}
+		}
+
+		.card h2 {
+			font-size: 1.6rem;
+		}
+
+		.card .billing {
+			display: flex;
+			gap: 1rem;
+			align-items: center;
+
+			.price {
+				font-size: 2.65rem;
+				font-weight: 800;
+				color: #20252f;
+			}
+		}
+
+		.card .billing-details {
+			color: #40454f;
+			display: flex;
+			flex-direction: column;
+
+			span {
+				font-weight: 600;
+			}
+		}
+
+		.bottom {
+			display: grid;
+			gap: 1.5rem;
+		}
+
+		.card li {
+			color: #20252f;
+
+			.icon {
+				font-size: 1.2em;
+				font-weight: 900;
+				color: #b0b5bf;
+				user-select: none;
+			}
+		}
+
+		.bottom a {
+			width: fit-content;
+			color: #80868f;
+			text-underline-offset: 2px;
+			text-decoration-thickness: 0px;
+			text-decoration-color: transparent;
+			transition: all 0.2s;
+
+			&:hover,
+			&:focus-visible {
+				text-decoration-thickness: 0.1em;
+				text-decoration-color: #c5c8cf;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<main>
+		<div class="card">
+			<svg class="svg-bg" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<defs>
+					<filter id="blur-strong">
+						<feGaussianBlur stdDeviation="10" />
+					</filter>
+
+					<filter id="blur-soft">
+						<feGaussianBlur stdDeviation="5" />
+					</filter>
+
+					<linearGradient id="yellow-gradient">
+						<stop offset="0%" stop-color="oklch(82.8% 0.189 84.429)" />
+						<stop offset="50%" stop-color="white" />
+						<stop offset="100%" stop-color="oklch(82.8% 0.189 84.429)" />
+					</linearGradient>
+
+					<linearGradient id="red-gradient">
+						<stop offset="0%" stop-color="oklch(63.7% 0.237 25.331)" />
+						<stop offset="50%" stop-color="white" />
+						<stop offset="100%" stop-color="oklch(63.7% 0.237 25.331)" />
+					</linearGradient>
+				</defs>
+
+				<g filter="url(#blur-strong)">
+					<rect width="100" height="100" fill="transparent" />
+					<rect x="10" y="-48" width="80" height="50" fill="oklch(54.6% 0.245 262.881)" />
+				</g>
+
+				<g filter="url(#blur-soft)">
+					<rect width="100" height="100" fill="transparent" />
+
+					<rect x="-25" y="32" width="150" height="10" fill="url(#yellow-gradient)" />
+					<rect x="-25" y="40" width="150" height="8" fill="url(#red-gradient)" />
+				</g>
+			</svg>
+
+			<div class="top">
+				<h2>Plus</h2>
+				<div class="billing">
+					<span class="price">$15</span>
+					<div class="billing-details">
+						<span>per editor / month</span>
+						<span>billed annually</span>
+					</div>
+				</div>
+			</div>
+
+			<button>Get Started</button>
+
+			<div class="bottom">
+				<ul>
+					<li>
+						<span class="icon">+</span>
+						<span>10 videos / month</span>
+					</li>
+
+					<li>
+						<span class="icon">+</span>
+						<span>Unlimited app integrations</span>
+					</li>
+
+					<li>
+						<span class="icon">+</span>
+						<span>Smart prompt ideas</span>
+					</li>
+
+					<li>
+						<span class="icon">+</span>
+						<span>Advanced dashboard analytics</span>
+					</li>
+				</ul>
+
+				<a href="#">Need higher limits?</a>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>
