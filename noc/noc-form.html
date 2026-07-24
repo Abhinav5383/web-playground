@@ -125,11 +125,12 @@
         }
 
         .noc {
+            margin-inline: auto;
+            width: min(100%, 210mm);
             padding: 36px;
             aspect-ratio: 210 / 297;
             display: grid;
-            align-content: start;
-            align-items: start;
+            grid-template-rows: auto 1fr;
         }
 
         header {
@@ -190,6 +191,7 @@
         }
 
         main {
+            display: grid;
             padding: 14px 0 0 10px;
             font-size: 14px;
             font-weight: 500;
@@ -207,6 +209,17 @@
                 display: flex;
                 align-items: baseline;
                 justify-content: space-between;
+            }
+
+            .main-text {
+                margin-block-start: 0.7ch;
+                line-height: 180%;
+
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    width: 10ch;
+                }
             }
         }
     </style>
@@ -231,23 +244,80 @@
             <img src="./nba.jpg" alt="nba" class="nba" />
         </header>
         <main>
-            <div class="date">
-                <span>Ref. No.: .............</span>
-                <span>Date: .........................</span>
+            <div>
+                <div class="date">
+                    <span>Ref. No.: <div style="display: inline-block; width: 8ch; translate: 0 1px; border-bottom: 1px dashed black;"></div></span>
+                    <span>Date: <div style="display: inline-block; width: 12ch; translate: 0 1px; border-bottom: 1px dashed black;"></div></span>
+                </div>
+                <span style="margin-block-start: 3ch;">From,</span>
+                <div
+                    style="margin-block-start: 1ch; margin-inline-start: 4ch; display: grid; gap: 1ch; width: 32ch; overflow: hidden;">
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1ch; align-items: baseline;">
+                        <span style="letter-spacing: 0.07ch; margin-bottom: 1ch;">Name:</span>
+                        <div style="translate: 0 1px; border-bottom: 1px dashed black;"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1ch; align-items: baseline;">
+                        <span style="letter-spacing: 0.07ch; margin-bottom: 1ch;">Branch:</span>
+                        <div style="translate: 0 1px; border-bottom: 1px dashed black;"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1ch; align-items: baseline;">
+                        <span style="letter-spacing: 0.07ch; margin-bottom: 1ch;">Roll&nbsp;No.:</span>
+                        <div style="translate: 0 1px; border-bottom: 1px dashed black;"></div>
+                    </div>
+                </div>
+
+                <span style="margin-block-start: 1ch;">To,</span>
+                <div style="margin-inline-start: 3ch; margin-block-start: 0.7ch;">
+                    The Head of Department,
+                </div>
+                <div style="margin-inline-start: 3ch; margin-block-start: 1.5ch;">
+                    Department of <div
+                        style="display: inline-block; width: 32ch; margin-inline-end: 0.3ch; border-bottom: 1px dashed black;">
+                    </div>,
+                </div>
+                <div style="margin-inline-start: 3ch; margin-block-start: 1.3ch;">
+                    New Govt. Polytechnic, Patliputra, Patna-13
+                </div>
+
+                <span style="margin-block-start: 3ch;">
+                    <span style="letter-spacing: 0.07ch;">Sub:</span> Request for No Objection Certificate for an
+                    Internship
+                </span>
+
+                <br />
+                <span style="margin-block-start: 2ch;">Respected Sir,</span>
+                <p class="main-text" style="text-align: justify;">
+                    With reference to the subject noted above, I am writing to request a No Objection Certificate from
+                    the
+                    department to pursue an internship at
+                    .......................................................................................
+                    ................................... . This opportunity is a remote internship for a
+                    duration of 6 months, scheduled from ....................................... to
+                    ....................................... .
+                    Because the role is entirely remote, I will be able to attend my regular college classes and fulfill
+                    all
+                    academic responsibilities simultaneously without any disruption. I kindly request you to grant me
+                    permission and approve this application so it may serve as my official NOC.
+                </p>
             </div>
-            <span style="margin-block-start: 3ch;">From,</span>
-            <pre style="margin-block-start: 1ch;">
-                Prof. Incharge,
-                Institute Industry Cell,
-                New Govt. Polytechnic,
-                Patliputra, Patna-13</pre>
-            
-            <span style="margin-block-start: 1.5ch;">To,</span>
-            <div style="margin-inline-start: 3ch; width: 28ch; height: 0.6lh; border-bottom: 2px solid #456;"></div>
-            <div style="margin-inline-start: 3ch; width: 28ch; height: 1.6lh; border-bottom: 2px solid #456;"></div>
-            <div style="margin-inline-start: 3ch; width: 28ch; height: 1.6lh; border-bottom: 2px solid #456;"></div>
-            
-            <span style="margin-block-start: 3ch;">Subject: Regarding NOC for </span>
+
+            <div
+                style="align-self: end; display: grid; grid-template-columns: max-content 1fr max-content; align-items: end; padding-block-end: 20ch;">
+                <div style="display: grid; place-content: end; gap: 1.5ch;">
+                    <span>Thanking You,</span>
+                    <span>Yours Faithfully</span>
+
+                    <span style="border-block-start: 1px dashed black; padding:1ch 10ch 0 0; margin-block-start: 3ch;">Student's Signature</span>
+                </div>
+
+                <span></span>
+
+                <div style="display: grid; justify-items: center; gap: 1.3ch;">
+                    <span style="border-block-start: 1px dashed black; padding: 2ch 5ch 0;">Signature of HOD</span>
+                    <span>Dept. of <div style="display: inline-block; width: 10ch; translate: 0 1px; border-bottom: 1px dashed black;"></div></span>
+                    <span>New Government Polytechnic, Patna-13</span>
+                </div>
+            </div>
         </main>
     </div>
 
