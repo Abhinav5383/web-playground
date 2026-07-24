@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <title>NOC</title>
+
+    <style>
+        @font-face {
+            font-family: 'CooperLtBt';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url('./fonts/CooperLtBT.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'CanvaSans';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url('./fonts/CanvaSans-VF.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'IBMPlexSans';
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+            src: url('./fonts/IBMPlexSansCondensed.ttf') format('truetype');
+        }
+
+        html,
+        body {
+            font-family: "CanvaSans", system-ui;
+        }
+
+        :root {
+            color-scheme: light;
+            --accent-blue: lch(46.99% 67.34 288.55);
+            --text-primary: #10151f;
+            --text-secondary: #30353f;
+            --text-tertiary: #80858f;
+            --vertical-separator: #c6cbd6;
+            --horizontal-separator: lch(60.35% 45.33 280.39);
+        }
+
+        * {
+            text-box-trim: trim-both;
+            text-box-edge: cap alphabetic;
+        }
+
+        body {
+            background-color: white;
+            line-height: 1.4;
+            color: black;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover,
+        a:focus-visible {
+            text-decoration-style: solid;
+        }
+
+        .link {
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: lch(from currentColor l c h / 0.5);
+            text-underline-offset: 0.15em;
+        }
+
+        .bold {
+            font-weight: 600;
+        }
+
+        .black {
+            color: var(--text-primary);
+        }
+
+        .accent {
+            color: var(--accent-blue);
+        }
+
+        em {
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .complementary {
+            color: #4b5563;
+            font-size: 0.95rem;
+            font-weight: normal;
+        }
+
+        ul {
+            padding-inline-start: 1.3em;
+            margin-block-start: 0.75em;
+        }
+
+        li:not(:first-child) {
+            margin-block-start: 1.1em;
+        }
+
+        /* ----------------------------------------------- */
+
+        body {
+            display: grid;
+        }
+
+        .noc {
+            padding: 36px;
+            aspect-ratio: 210 / 297;
+            display: grid;
+            align-content: start;
+            align-items: start;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 4px;
+            border-block-end: 2px black solid;
+            position: relative;
+
+            h1 {
+                font-family: "CooperLtBt", system-ui;
+                font-weight: 700;
+                color: #ff0101;
+                font-size: 24px;
+            }
+
+            .header-others {
+                display: grid;
+                justify-items: center;
+                gap: 10px;
+                font-size: 14px;
+                color: #08336d;
+                font-family: "IBMPlexSans", system-ui;
+
+                .info {
+                    display: flex;
+                    gap: 8px;
+                    align-items: baseline;
+                }
+            }
+
+            .bihar-gov {
+                position: absolute;
+                width: 140px;
+                height: auto;
+                left: -10px;
+                top: -4px;
+            }
+
+            .ngp {
+                position: absolute;
+                width: 110px;
+                height: auto;
+                right: -20px;
+                top: 0px;
+            }
+
+            .nba {
+                position: absolute;
+                width: 115px;
+                height: auto;
+                right: 100px;
+                bottom: 26px;
+            }
+        }
+
+        main {
+            padding: 14px 0 0 10px;
+            font-size: 14px;
+            font-weight: 500;
+
+            span {
+                display: inline-block;
+            }
+
+            pre {
+                font-size: inherit;
+                font-family: inherit;
+            }
+
+            .date {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noc">
+        <header>
+            <h1>NEW GOVERNMENT POLYTECHNIC</h1>
+            <div class="header-others">
+                <span>Patliputra, Patna-800013, Bihar (India)</span>
+                <span>Approved by AICTE, New Delhi (Govt. of India)</span>
+                <span>Affiliated to SBTE - Bihar</span>
+
+                <div class="info">
+                    Website: www.ngpp.ac.in <span>|</span> E-mail: ngpp13-bih@nic.in <span>|</span> Phone: 0612-2262856
+                    <span>|</span> Fax: 0612-2262700
+                </div>
+            </div>
+            <img src="./bihar-govt.png" alt="bihar-gov" class="bihar-gov" />
+            <img src="./ngp.jpg" alt="ngp" class="ngp" />
+            <img src="./nba.jpg" alt="nba" class="nba" />
+        </header>
+        <main>
+            <div class="date">
+                <span>Ref. No.: .............</span>
+                <span>Date: .........................</span>
+            </div>
+            <span style="margin-block-start: 3ch;">From,</span>
+            <pre style="margin-block-start: 1ch;">
+                Prof. Incharge,
+                Institute Industry Cell,
+                New Govt. Polytechnic,
+                Patliputra, Patna-13</pre>
+            
+            <span style="margin-block-start: 1.5ch;">To,</span>
+            <div style="margin-inline-start: 3ch; width: 28ch; height: 0.6lh; border-bottom: 2px solid #456;"></div>
+            <div style="margin-inline-start: 3ch; width: 28ch; height: 1.6lh; border-bottom: 2px solid #456;"></div>
+            <div style="margin-inline-start: 3ch; width: 28ch; height: 1.6lh; border-bottom: 2px solid #456;"></div>
+            
+            <span style="margin-block-start: 3ch;">Subject: Regarding NOC for </span>
+        </main>
+    </div>
+
+</body>
+
+</html>
